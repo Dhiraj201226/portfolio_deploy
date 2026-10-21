@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --mac-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --mac-mono: "SF Mono", "JetBrains Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  body {
+    font-family: var(--mac-font);
+    font-size: 14px;
+    line-height: 1.5;
+    color: #1d1d1f;
+    user-select: none;
+    -webkit-user-select: none;
+    overflow: hidden;
+  }
+
+  /* Accessible visible focus ring conforming to HCI standards */
+  *:focus-visible {
+    outline: 2px solid #007aff !important;
+    outline-offset: 2px !important;
+  }
+
+  /* Motion reduction for users with vestibular sensitivity */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Custom Scrollbar for macOS aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 120, 128, 0.28);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 120, 128, 0.45);
+}
+
+/* Window Shadows */
+.mac-window-shadow {
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 0 0 1px rgba(0, 0, 0, 0.65);
+}
+
+.mac-window-shadow-inactive {
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08) inset, 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+/* Dock styling */
+.mac-dock-glass {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(35px) saturate(210%);
+  -webkit-backdrop-filter: blur(35px) saturate(210%);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35), 0 0 0 0.5px rgba(0, 0, 0, 0.15);
+}
+
+/* Menu bar styling */
+.mac-menubar-glass {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.12);
+}
+
+/* Contrast improvements */
+.text-contrast-body {
+  color: #1d1d1f; /* Contrast ratio > 12:1 against light background */
+}
+
+.text-contrast-muted {
+  color: #515154; /* Contrast ratio > 5.5:1 against light background (meets 4.5:1 AAA/AA standard) */
+}
+
+.text-dark-contrast-body {
+  color: #f5f5f7;
+}
+
+.text-dark-contrast-muted {
+  color: #a1a1a6;
+}
